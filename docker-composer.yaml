@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+
+  www:
+    build: .
+    image: testdocker
+    container_name: testdocker
+    ports:
+      - "10038:80"
+    volumes:
+      - ./php/vhosts:/etc/apache2/sites-enabled
+      - ./:/var/www/pgs
+    restart: on-failure
+    network_mode: bridge
